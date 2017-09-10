@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>extension TimeInterval {
+	
+	func stringValue() -&gt; String? {
+		
+		let formatter = DateComponentsFormatter()
+		formatter.includesApproximationPhrase = &lt;#Bool#&gt;
+		formatter.includesTimeRemainingPhrase = &lt;#Bool#&gt;
+		formatter.allowedUnits = &lt;#NSCalendar.Unit#&gt;
+		
+		 return formatter.string(from: self)
+	}
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>4D305F5E-08F5-468C-9F9F-5CC718888131</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>TimeInterval String Formatter</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

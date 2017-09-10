@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>network</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>class NetworkController {
+	
+	enum HTTPMethod: String {
+		case get = "GET"
+		case put = "PUT"
+		case post = "POST"
+		case patch = "PATCH"
+		case delete = "DELETE"
+	}
+	
+	static func performRequest(for url: URL, httpMethod: HTTPMethod, urlParameters: [String:String]? = nil, body: Data? = nil, completion: ((Data?, Error?) -&gt; Void)? = nil) {
+		
+		let requestURL = self.url(byAdding: urlParameters, to: url)
+		var request = URLRequest(url: requestURL)
+		request.httpMethod = httpMethod.rawValue
+		request.httpBody = body
+		
+		let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+			completion?(data, error)
+		}
+		dataTask.resume()
+	}
+	
+	static func url(byAdding parameters: [String:String]?, to url: URL) -&gt; URL {
+		
+		var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+		components?.queryItems = parameters?.flatMap({URLQueryItem(name: $0.0, value: $0.1)})
+		
+		guard let url = components?.url else {
+			fatalError("Nuts! The URL is nil")
+		}
+		return url
+	}
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>1B409BF7-5142-441C-ADBF-A931DB6DE0C8</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>NetworkController</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
